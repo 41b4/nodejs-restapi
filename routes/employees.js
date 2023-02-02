@@ -1,10 +1,9 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db");
+const getEmployees= require('../controllers/employees.controller')
 
-router.get("/employees", function (req, res, next) {
-  res.send("obteniendo empleados");
-});
+router.get("/employees", getEmployees);
 router.post("/employees", function (req, res, next) {
   res.send("creando empleados");
 });
