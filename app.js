@@ -19,4 +19,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', employesRouter)
 
+app.use((req, res, next)=>{
+    res.status(404).json({
+        message: 'endpoint not found'
+    })
+})
+
 module.exports = app;

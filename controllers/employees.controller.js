@@ -1,9 +1,17 @@
 const pool = require('../db')
 
 const getEmployees= async function (req, res, next) {
-  const [rows]= await pool.query('SELECT * FROM employee ')
-  res.send({
-    rows});
+  try{
+    // throw new Error ('Mi error')
+    const [rows]= await pool.query('SELECT * FROM employee ')
+    res.send({
+      rows});
+  }catch(error){
+    return res.status(500).json({
+      message: 'Something was wrong'
+    })
+  }
+  
 }
 
 const getEmployee= async function (req, res, next) {
